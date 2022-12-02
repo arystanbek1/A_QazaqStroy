@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Table of concrete</title>
+</head>
+<body>
+<h1>Все Записи</h1>
+<h1>----------------------------------</h1>
+{% for el in model_concrete %}
+    <h4> Дата: {{ el.data }} </h4>
+    <h4> Завод: {{ el.factory_name }} </h4>
+    <h4> Объект: {{ el.object_name }} </h4>
+    <h4> Блок: {{ el.block }} </h4>
+    <h4> Марка бетона: {{ el.mark }} </h4>
+    <h4> Конструктив: {{ el.constructive }} </h4>
+    <h4> Этаж: {{ el.floor }} </h4>
+    <h4> Факт: {{ el.fact_concrete }} </h4>
+    <h4> Итого залито: {{ el.sum_concrete }} </h4>
+    <h4> Заполнил: {{ el.accepted }} </h4>
+    <a href="{% url 'detail' el.id %}"><li><button class="btn btn-info"><i class="fas fa-plus-circle"></i>Читать детальнее</button></li></a>
+    <h1>----------------------------------</h1>
+
+{% endfor %}
+
+</body>
+</html>
