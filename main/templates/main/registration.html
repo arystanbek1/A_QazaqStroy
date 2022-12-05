@@ -8,8 +8,20 @@
     <title>Base</title>
 </head>
 <body>
-<a href="{% url 'table' %}"><li><button class="btn btn-info"><i class="fas fa-plus-circle"></i>Посмотреть весь бетон</button></li></a>
-<a href="{% url 'create' %}"><li><button class="btn btn-info"><i class="fas fa-plus-circle"></i>Добавить бетон</button></li></a>
+
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.name }} <br>
+    {{ form.surname }} <br>
+    {{ form.phone }} <br>
+    {{ form.sms }} <br>
+    <span>{{ error }}</span>
+    <button class="" type="submit">Зарегестрироваться</button>
+
+</form>
+
+
 
 
 

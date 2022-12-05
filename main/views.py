@@ -1,7 +1,25 @@
 from django.shortcuts import render, redirect
-from .models import SaveConcreate
-from .forms import CreateConcreteForms
+from .models import SaveConcrete, Registration
+from .forms import CreateConcreteForms, RegistrationForms
 from django.views.generic import UpdateView, DeleteView, DetailView
+
+
+def regis(request):
+    form = RegistrationForms
+    error = ''
+    data = {
+        'form': form,
+        'error': error,
+
+    }
+    if request.method == 'POST':
+        form = RegistrationForms(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('base')
+        else:
+            error = 'Не правильно заполнили'
+    return render(request, 'main/registration.html', data)
 
 
 def base(request):
@@ -9,7 +27,7 @@ def base(request):
 
 
 def table(request):
-    model_concrete = SaveConcreate.objects.all()
+    model_concrete = SaveConcrete.objects.all()
     return render(request, 'main/table.html', {'model_concrete': model_concrete})
 
 
@@ -25,7 +43,7 @@ def create(request):
         form = CreateConcreteForms(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('table')
+            return redirect('http://127.0.0.1:8000/table')
         else:
             error = 'Не правильно заполнили'
 
@@ -33,19 +51,19 @@ def create(request):
 
 
 class ConcreteDetailView(DetailView):
-    model = SaveConcreate
+    model = SaveConcrete
     template_name = 'main/detail.html'
     context_object_name = 'el'
 
 
 class ConcreteUpdateView(UpdateView):
-    model = SaveConcreate
+    model = SaveConcrete
     template_name = 'main/create.html'
     form_class = CreateConcreteForms
 
 
 class ConcreteDeleteView(DeleteView):
-    model = SaveConcreate
+    model = SaveConcrete
     success_url = 'http://127.0.0.1:8000/table'
     template_name = 'main/delete.html'
 

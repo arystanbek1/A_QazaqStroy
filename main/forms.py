@@ -1,11 +1,11 @@
 from django import forms
 from django.forms import TextInput, DateTimeInput, NumberInput
-from .models import SaveConcreate
+from .models import SaveConcrete, Registration
 
 
 class CreateConcreteForms(forms.ModelForm):
     class Meta:
-        model = SaveConcreate
+        model = SaveConcrete
         fields = ['data', 'factory_name', 'object_name',
                   'block', 'mark', 'constructive', 'floor', 'fact_concrete',
                   'sum_concrete', 'accepted']
@@ -21,4 +21,18 @@ class CreateConcreteForms(forms.ModelForm):
             'fact_concrete': NumberInput(attrs={'class': 'form-control', 'placeholder': 'Факт'}),
             'sum_concrete': NumberInput(attrs={'class': 'form-control', 'placeholder': 'Итого залито'}),
             'accepted': TextInput(attrs={'class': 'form-control', 'placeholder': 'Кто принимал'}),
+        }
+
+
+class RegistrationForms(forms.ModelForm):
+    class Meta:
+        model = Registration
+
+        fields = ['name', 'surname', 'phone', 'sms']
+
+        widgets = {
+            'name': TextInput(attrs={'class': 'form-control', 'placeholder': 'Имя'}),
+            'surname': TextInput(attrs={'class': 'form-control', 'placeholder': 'Фамилия'}),
+            'phone': TextInput(attrs={'class': 'form-control', 'placeholder': 'Телефон номер'}),
+            'sms': TextInput(attrs={'class': 'form-control', 'placeholder': 'СМС'}),
         }

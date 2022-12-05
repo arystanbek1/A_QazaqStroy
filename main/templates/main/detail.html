@@ -15,7 +15,7 @@
     <h4> Факт: {{ el.fact_concrete }} </h4>
     <h4> Итого залито: {{ el.sum_concrete }} </h4>
     <h4> Заполнил: {{ el.accepted }} </h4>
-    <a href="{% url 'update' user.id %}"><li><button class="btn btn-info"><i class="fas fa-plus-circle"></i>Редактировать</button></li></a>
-    <a href="{% url 'delete' user.id %}"><li><button class="btn btn-info"><i class="fas fa-plus-circle"></i>Удалить</button></li></a>
+    <a href="{% url 'update' el.id %}"><li><button class="btn btn-info"><i class="fas fa-plus-circle"></i>Редактировать</button></li></a>
+    <a href="{% url 'delete' el.id %}"><li><button class="btn btn-info"><i class="fas fa-plus-circle"></i>Удалить</button></li></a>
 </body>
 </html>
