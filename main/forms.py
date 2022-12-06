@@ -1,6 +1,7 @@
 from django import forms
 from django.forms import TextInput, DateTimeInput, NumberInput
 from .models import SaveConcrete, Registration
+from .choice import FactoryChoice, ConstructiveChoice, CustomUserRoleChoice, MarkConcreteChoice
 
 
 class CreateConcreteForms(forms.ModelForm):
@@ -22,6 +23,20 @@ class CreateConcreteForms(forms.ModelForm):
             'sum_concrete': NumberInput(attrs={'class': 'form-control', 'placeholder': 'Итого залито'}),
             'accepted': TextInput(attrs={'class': 'form-control', 'placeholder': 'Кто принимал'}),
         }
+
+
+# class CreateConcreteForms(forms.Form):
+#     model = SaveConcrete
+#     data = forms.DateField(label='Дата')
+#     factory_name = forms.ChoiceField(label='Завод', choices=FactoryChoice.choices)
+#     object_name = forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Название объекта'}),
+#     block = forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Блок'}),
+#     mark = forms.ChoiceField(label='Марка', choices=MarkConcreteChoice.choices),
+#     constructive = forms.ChoiceField(label='Конструктив', choices=ConstructiveChoice.choices),
+#     floor = forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Этаж'}),
+#     fact_concrete = forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Факт'}),
+#     sum_concrete = forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Итого залито'}),
+#     accepted = forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Кто принимал'}),
 
 
 class RegistrationForms(forms.ModelForm):
