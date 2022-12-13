@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import SaveConcrete, Registration
+from .models import SaveConcrete, Registration, Object, Block, Floor
 
 
 @admin.register(Registration)
@@ -12,3 +12,8 @@ class SaveConcreteAdmin(admin.ModelAdmin):
     list_display = ["data", "factory_name", "object_name",
                     "block", "mark", "constructive", "floor",
                     "fact_concrete", "sum_concrete", "accepted"]
+
+
+admin.site.register(Object)
+admin.site.register(Block)
+admin.site.register(Floor)

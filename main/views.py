@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect
-from .models import SaveConcrete, Registration
+from .models import SaveConcrete, Registration, Object
 from .forms import CreateConcreteForms, RegistrationForms
 from django.views.generic import UpdateView, DeleteView, DetailView
+from rest_framework.viewsets import ModelViewSet
+from rest_framework.permissions import AllowAny
+from .serializers.serializer import ObjectSerializer
 
 
 def regis(request):
@@ -66,5 +69,12 @@ class ConcreteDeleteView(DeleteView):
     model = SaveConcrete
     success_url = 'http://127.0.0.1:8000/table'
     template_name = 'main/delete.html'
+
+
+class ObjectViewSet(ModelViewSet):
+    queryset = Object.objects.all()
+    serializer_class = ObjectSerializer
+    permission_classes = [AllowAny, ]
+
 
 
