@@ -8,7 +8,7 @@ class Registration(models.Model):
     object = models.ForeignKey('Object', verbose_name='Название объекта', on_delete=models.CASCADE)
     phone = models.IntegerField('Телефон номер', unique=True)
     sms = models.IntegerField('введите СМС')
-    job = models.CharField('Должность', choices=CustomUserRoleChoice.choices, max_length=22, null=True)
+    job = models.CharField('Должность', choices=CustomUserRoleChoice.choices, max_length=22, default='Не выбран')
 
     def __str__(self):
         return str(self.surname) + " " + str(self.name)
@@ -25,10 +25,10 @@ class SaveConcrete(models.Model):
     data = models.DateField('Дата заполнение', max_length=20)
     factory_name = models.CharField('Название завода', choices=FactoryChoice.choices, max_length=50)
     object_name = models.ForeignKey('Object', verbose_name='Название объекта', on_delete=models.CASCADE)
-    block = models.IntegerField('блок')
+    block = models.ForeignKey('Block', verbose_name='Блок', on_delete=models.CASCADE)
     mark = models.CharField('Марка бетона', choices=MarkConcreteChoice.choices, max_length=50)
     constructive = models.CharField('Конструктив', choices=ConstructiveChoice.choices, max_length=50)
-    floor = models.IntegerField('Этаж')
+    floor = models.ForeignKey('Floor', verbose_name='Этаж', on_delete=models.CASCADE)
     fact_concrete = models.IntegerField('Факт')
     sum_concrete = models.IntegerField('Итого залито')
     accepted = models.ForeignKey('Registration', verbose_name='Принял', on_delete=models.CASCADE)
@@ -47,6 +47,8 @@ class SaveConcrete(models.Model):
 class Block(models.Model):
     object = models.ForeignKey('Object', verbose_name='Объект', on_delete=models.CASCADE)
     name_block = models.CharField('Название блока', max_length=20, null=True, blank=True)
+    created_at = models.DateTimeField('Дата добавление', auto_now_add=True)
+    updated_at = models.DateTimeField('Дата обноваление', auto_now=True)
 
     class Meta:
         verbose_name = 'Блок'

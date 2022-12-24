@@ -57,9 +57,9 @@ class CustomUserRoleChoice(models.TextChoices):
 
 
 class ObjectNameChoice(models.TextChoices):
-    TEREMKI = 'Teremki', 'Теремки'
-    TERRACOTA = 'Terracota', 'Терракота'
-    KRISTAL = 'Kristal', 'Кристал'
-    TOLEBI_1 = 'Tole bi 1', 'Толе би 1'
-    TOLEBI_2 = 'Tole bi 2', 'Толе би 2'
-    TOLEBI_3 = 'Tole bi 3', 'Толе би 3'
+    TEREMKI = 'Теремки', 'Теремки'
+    TERRACOTA = 'Терракота', 'Терракота'
+    KRISTAL = 'Кристал', 'Кристал'
+    TOLEBI_1 = 'Толе би 1', 'Толе би 1'
+    TOLEBI_2 = 'Толе би 2', 'Толе би 2'
+    TOLEBI_3 = 'Толе би 3', 'Толе би 3'

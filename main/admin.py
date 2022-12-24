@@ -15,5 +15,10 @@ class SaveConcreteAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Object)
-admin.site.register(Block)
+
 admin.site.register(Floor)
+
+
+@admin.register(Block)
+class BlockAdmin(admin.ModelAdmin):
+    list_display = ["object", "name_block"]
